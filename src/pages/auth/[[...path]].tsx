@@ -1,5 +1,3 @@
-'use client'
-
 import React, { useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { EmailPasswordPreBuiltUI } from "supertokens-auth-react/recipe/emailpassword/prebuiltui";
@@ -12,6 +10,7 @@ const SuperTokensComponentNoSSR = dynamic<{}>(
 )
 
 export default function Auth() {
+
     // if the user visits a page that is not handled by us (like /auth/random), then we redirect them back to the auth page.
     useEffect(() => {
         if (canHandleRoute([EmailPasswordPreBuiltUI]) === false) {
@@ -20,9 +19,6 @@ export default function Auth() {
     }, [])
 
     return (
-        <div>
-            Please login with the following form.
-            <SuperTokensComponentNoSSR />
-        </div>
+        <SuperTokensComponentNoSSR />
     )
 }
